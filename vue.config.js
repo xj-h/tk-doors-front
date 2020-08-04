@@ -5,6 +5,15 @@ function resolve (dir) {
 }
 
 module.exports = {
+  pwa: {
+    iconPaths: {
+      favicon32: 'favicon.ico',
+      favicon16: 'favicon.ico',
+      appleTouchIcon: 'favicon.ico',
+      maskIcon: 'favicon.ico',
+      msTileImage: 'favicon.ico'
+    }
+  },
   // publicPath: process.env.NODE_ENV === 'development' ? '/' : '/vue/tong/v1',
   publicPath: process.env.VUE_APP_BASEURL,
   filenameHashing: true,
