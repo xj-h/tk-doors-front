@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
+  baseURL: '/common'
   // headers: {}
 })
 const PROXY_URL = '/common/verify/getSimpleVerifyImage'
