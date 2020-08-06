@@ -21,12 +21,12 @@
             <label class="from-label">验证码</label>
             <input v-model.trim="msgInfo.chkCode" class="from-input" type="text" placeholder="输入手机验证码" style="width:255px">
             <div class="msg-btn-wrap" />
-            <p class="msg-btn-tip">
+            <!-- <p class="msg-btn-tip">
               收不到短信验证码
               <span v-if="seconds" style="color:#ccc">{{ audioTip }}</span>
               <span v-else style="color:#FF5043">{{ audioTip }}</span>
-            </p>
-            <div>
+            </p> -->
+            <div style="margin-top:40px;margin-left:-160px">
               <label class="from-label"><img :src="imgurl" height="48" width="120"></label>
               <input v-model.trim="msgInfo.chksCode" class="from-input" type="text" placeholder="请输入左侧验证码" style="width:255px">
             </div>
@@ -41,16 +41,12 @@
             </p>
           </div>
         </div>
-        <div style="margin-top:50px;padding-left:50px;">
-          <Button :loading="isLoading" @click="loginBtn">
-            登录
-          </Button>
-        </div>
-        <p class="login-btn-tip">
+        <div style="margin-top:50px;padding-left:50px;" />
+        <!-- <p class="login-btn-tip">
           没有账号?<router-link to="/register">
             立即注册
           </router-link>
-        </p>
+        </p> -->
       </template>
     </loginRegisterWrap>
   </div>
