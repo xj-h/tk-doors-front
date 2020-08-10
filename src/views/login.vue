@@ -58,7 +58,7 @@
 
 <script>
 import loginRegisterWrap from '@/components/login-register-wrap'
-import { getcodeimg } from '../api/login'
+import { getcodeimg } from '@api/login'
 export default {
   components: { loginRegisterWrap },
   data () {

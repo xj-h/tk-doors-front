@@ -1,4 +1,8 @@
 // const fs = require('fs')
+const CompressionWebpackPlugin = require('compression-webpack-plugin')
+const productionGzipExtensions = ['js', 'css']
+const webpack = require('webpack')
+
 const path = require('path')
 function resolve (dir) {
   return path.join(__dirname, dir)
@@ -14,26 +18,8 @@ module.exports = {
       msTileImage: 'favicon.ico'
     }
   },
-  // publicPath: process.env.NODE_ENV === 'development' ? '/' : '/vue/tong/v1',
-  publicPath: process.env.VUE_APP_BASEURL,
-  filenameHashing: true,
   productionSourceMap: (process.env.NODE_ENV !== 'production') && (process.env.NODE_ENV !== 'preproduction'),
   chainWebpack: config => {
-    // 添加分析工具
-    if (process.env.NODE_ENV === 'production') {
-      if (process.env.npm_config_report) {
-        config
-          .plugin('webpach-bundle-analyzer')
-          .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin)
-          .end()
-        config.plugin.delete('predetch')
-      }
-    }
-    // 移除 prefetch 插件
-    config.plugins.delete('prefetch')
-    // 移除 preload 插件
-    config.plugins.delete('preload')
-
     // 路径别名
     config.resolve.alias
       .set('@', resolve('src'))
@@ -44,19 +30,23 @@ module.exports = {
       .set('@js', resolve('src/assets/js'))
       .set('@config', resolve('src/config'))
   },
-  configureWebpack: config => {
-    // 调试JS
-    config.devtool = 'source-map'
+  configureWebpack: {
+    plugins: [
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+
+      // 下面是下载的插件的配置
+      new CompressionWebpackPlugin({
+        algorithm: 'gzip',
+        test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
+        threshold: 10240,
+        minRatio: 0.8
+      }),
+      new webpack.optimize.LimitChunkCountPlugin({
+        maxChunks: 5,
+        minChunkSize: 100
+      })
+    ]
   },
-  css: {
-    loaderOptions: {
-      sass: {
-        // @是src的别名
-        // data: '@import "@/assets/css/variable.scss";'
-      }
-    }
-  },
-  transpileDependencies: [],
   /**
    * 本地代理配置
    * 完整选项：https://github.com/chimurai/http-proxy-middleware#proxycontext-config
