@@ -31,7 +31,7 @@ const routes = [
   {
     path: '/fly',
     name: 'fly',
-    component: () => import(/* webpackChunkName: "about" */ '../views/fly.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/flytes.vue')
   }
 ]
 
