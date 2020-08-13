@@ -16,13 +16,13 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       msgLogin: false
     }
   },
   methods: {
-    selectType (type) {
+    selectType(type) {
 
     }
   }

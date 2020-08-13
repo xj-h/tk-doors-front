@@ -72,3 +72,15 @@ ul.ant-cascader-menu{
     height: 240px;
     font-size: 16px;
 }
+.fontcolorgrey{
+    color: #666;
+}
+.fontsize12{
+    font-size: 12px;
+}
+.float{
+    float: left;
+}
+.text_align_center{
+    text-align: center;
+}
