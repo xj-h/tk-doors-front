@@ -7,17 +7,17 @@ const instance = axios.create({
 const PROXY_URL = '/common/verify/getSimpleVerifyImage'
 
 // 请求拦截
-instance.interceptors.request.use(function (config) {
+instance.interceptors.request.use(function(config) {
   // console.log(process.server, process.env.proxyURL)
   config.baseURL = process.env.proxyURL
   config.url = PROXY_URL
   return config
-}, function (error) {
+}, function(error) {
   return Promise.reject(error)
 })
 
 // 响应拦截
-instance.interceptors.response.use(function (response) {
+instance.interceptors.response.use(function(response) {
   const resData = response.data
   if (resData.statusCode === '000000') {
     resData.success = true
@@ -38,10 +38,10 @@ instance.interceptors.response.use(function (response) {
   } else {
     return Promise.reject(resData)
   }
-}, function (error) {
+}, function(error) {
   return Promise.reject(error)
 })
 
-export default function (config) {
+export default function(config) {
   return instance.request(config)
 }

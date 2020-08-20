@@ -1,7 +1,7 @@
 import request from './request'
 
 // http://htsit.hanhua.com/pla-cust
-function plaCust (code, option = {}) {
+function plaCust(code, option = {}) {
   const config = {
     headers: {},
     ...option
@@ -10,7 +10,7 @@ function plaCust (code, option = {}) {
 }
 
 // tong2
-function tong2 (code, option = {}) {
+function tong2(code, option = {}) {
   const config = {
     headers: {},
     ...option
@@ -22,7 +22,7 @@ function tong2 (code, option = {}) {
 }
 
 // HTONGBACK
-function hongback (code, option = {}) {
+function hongback(code, option = {}) {
   const config = {
     headers: {},
     ...option
@@ -34,7 +34,7 @@ function hongback (code, option = {}) {
 }
 
 // 情报（房估价）
-function qingbao (code, option = {}) {
+function qingbao(code, option = {}) {
   const config = {
     headers: {},
     ...option
